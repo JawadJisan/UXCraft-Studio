@@ -65,7 +65,7 @@
 
 // export default Documentary;
 
-/* -------------- */
+/*  */
 
 // import { Play, Film, Scissors, Music4, Sparkles } from "lucide-react";
 // import { Button } from "./ui/button";
@@ -98,8 +98,8 @@
 //           <div className="mt-6 h-1 w-24 bg-gradient-to-r from-studio-accent-purple to-studio-accent-cyan mx-auto rounded-full"></div>
 //         </div>
 
-//         <div className="grid lg:grid-cols-2 gap-12 items-center">
-//           <div className="space-y-8">
+//         <div className="grid lg:grid-cols-12 gap-12 items-center">
+//           <div className="lg:col-span-5 space-y-8">
 //             <h3 className="text-3xl md:text-4xl font-bold text-white font-orbitron">
 //               Professional Documentary Editing
 //             </h3>
@@ -176,7 +176,8 @@
 //             </Button> */}
 //           </div>
 
-//           <div className="relative group">
+//           {/* Updated video section - larger size */}
+//           <div className="lg:col-span-7 relative group">
 //             <div className="relative aspect-video rounded-2xl overflow-hidden glass-effect border border-studio-gray-700">
 //               <iframe
 //                 className="w-full h-full"
@@ -187,7 +188,7 @@
 //               />
 //             </div>
 
-//             {/* Glow Effect */}
+//             {/* Enhanced Glow Effect */}
 //             <div className="absolute -inset-4 bg-gradient-to-r from-studio-accent-purple/20 via-studio-accent-blue/20 to-studio-accent-cyan/20 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
 //           </div>
 //         </div>
@@ -239,7 +240,7 @@
 
 // export default Documentary;
 
-/* ---------- */
+/* -------- */
 import { Play, Film, Scissors, Music4, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -252,92 +253,91 @@ const Documentary = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 space-y-6">
-          <h2 className="section-title animate-fade-in">Documentary</h2>
+          <h2 className="section-title animate-fade-in text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-studio-gray-200 to-studio-gray-300">
+            Documentary
+          </h2>
+
           <p className="text-xl text-studio-gray-300 max-w-2xl mx-auto font-space-grotesk">
             Cinematic storytelling that captivates and informs
           </p>
+
           <div className="mt-6 h-1 w-24 bg-gradient-to-r from-studio-accent-purple to-studio-accent-cyan mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <h3 className="text-3xl md:text-4xl font-bold text-white font-orbitron">
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-5 space-y-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-white font-orbitron">
               Professional Documentary Editing
             </h3>
 
-            <p className="text-studio-gray-300 leading-relaxed text-lg">
+            <p className="text-studio-gray-300 leading-relaxed">
               Transform your raw footage into compelling narratives like top
               creators: James Jani, SunnyV2, Vox, and Magnates Media. We handle
               the technical complexity so you can focus on storytelling.
             </p>
 
-            <div className="space-y-5">
-              <div className="flex items-start gap-4">
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
                 <div className="p-2 bg-studio-accent-purple/10 rounded-lg mt-1">
                   <Film className="h-5 w-5 text-studio-accent-purple" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-lg">
-                    Cinematic Narrative
-                  </h4>
-                  <p className="text-studio-gray-300">
+                  <h4 className="font-bold text-white">Cinematic Narrative</h4>
+                  <p className="text-studio-gray-300 text-sm">
                     Story-driven editing with dramatic pacing and emotional
                     impact
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3">
                 <div className="p-2 bg-studio-accent-cyan/10 rounded-lg mt-1">
                   <Scissors className="h-5 w-5 text-studio-accent-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-lg">
-                    Viewer Retention
-                  </h4>
-                  <p className="text-studio-gray-300">
-                    Optimized pacing and hooks to maximize watch time and
-                    engagement
+                  <h4 className="font-bold text-white">Viewer Retention</h4>
+                  <p className="text-studio-gray-300 text-sm">
+                    Optimized pacing and hooks to maximize watch time
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3">
                 <div className="p-2 bg-studio-accent-blue/10 rounded-lg mt-1">
                   <Music4 className="h-5 w-5 text-studio-accent-blue" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-lg">
-                    Audio Enhancement
-                  </h4>
-                  <p className="text-studio-gray-300">
+                  <h4 className="font-bold text-white">Audio Enhancement</h4>
+                  <p className="text-studio-gray-300 text-sm">
                     Professional sound design and voiceover processing
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3">
                 <div className="p-2 bg-gradient-to-br from-studio-accent-purple/10 to-studio-accent-cyan/10 rounded-lg mt-1">
                   <Sparkles className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-lg">
-                    Visual Polish
-                  </h4>
-                  <p className="text-studio-gray-300">
+                  <h4 className="font-bold text-white">Visual Polish</h4>
+                  <p className="text-studio-gray-300 text-sm">
                     Color grading and effects that elevate production value
                   </p>
                 </div>
               </div>
             </div>
+
+            <Button className="btn-primary group mt-4 w-full sm:w-auto">
+              <Play className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+              Watch Documentary Sample
+            </Button>
           </div>
 
-          {/* Enhanced Video Section */}
-          <div className="relative group bg-red-700">
-            <div className="relative aspect-video rounded-2xl overflow-hidden glass-effect border-2 border-studio-gray-600 hover:border-studio-accent-purple transition-all duration-500">
+          <div className="lg:col-span-7 relative group">
+            <div className="relative aspect-video rounded-2xl overflow-hidden glass-effect border-2 border-studio-gray-600">
               <iframe
-                className="w-full h-full scale-105 group-hover:scale-100 transition-transform duration-700"
-                src="https://www.youtube.com/embed/VCHBTLr1X-0"
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/VCHBTLr1X-0?autoplay=1&mute=1&modestbranding=1&rel=0"
                 title="Documentary Sample"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -345,28 +345,29 @@ const Documentary = () => {
             </div>
 
             {/* Enhanced Glow Effect */}
-            <div className="absolute -inset-5 bg-gradient-to-r from-studio-accent-purple/30 via-studio-accent-blue/20 to-studio-accent-cyan/30 rounded-2xl blur-2xl opacity-70 group-hover:opacity-100 transition-all duration-700 -z-10"></div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-studio-accent-purple/20 via-studio-accent-blue/20 to-studio-accent-cyan/20 rounded-2xl blur-xl opacity-80 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
 
-            {/* Play Indicator */}
-            <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2 text-white text-sm">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-              PLAYING SAMPLE
-            </div>
+            {/* Play Button Overlay */}
+            {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="bg-black/40 backdrop-blur-sm rounded-full p-4 border-2 border-white/20">
+                <Play className="h-12 w-12 text-white" strokeWidth={1.5} />
+              </div>
+            </div> */}
           </div>
         </div>
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <div className="glass-effect p-8 rounded-2xl max-w-2xl mx-auto border border-studio-gray-700">
-            <h3 className="text-2xl font-bold text-white mb-4 font-orbitron">
+          <div className="glass-effect p-6 sm:p-8 rounded-2xl max-w-2xl mx-auto border border-studio-gray-700">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 font-orbitron">
               Ready to transform your documentary?
             </h3>
-            <p className="text-studio-gray-300 mb-6">
+            <p className="text-studio-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
               Let's craft a compelling narrative that resonates with your
               audience.
             </p>
             <Button
-              className="btn-primary inline-flex items-center justify-center group px-8 py-6 text-lg"
+              className="btn-primary inline-flex items-center justify-center group px-6 py-3 text-sm sm:text-base"
               onClick={() => {
                 const element = document.getElementById("contact");
                 if (element) {
