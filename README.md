@@ -1,73 +1,257 @@
-# Welcome to your Lovable project
+# UXCraft Studio - Professional Video Production Website
 
-## Project info
+A modern, responsive website for UXCraft Studio, a professional video editing and production company. Built with React, TypeScript, and Tailwind CSS, featuring smooth animations, modern design, and comprehensive portfolio showcase.
 
-**URL**: https://lovable.dev/projects/3c7af306-3432-42a4-acc8-e84a8939f8cb
+## 🌟 Features
 
-## How can I edit this code?
+### Core Sections
+- **Hero Section** - Video background with compelling introduction
+- **About Video** - Dedicated video section showcasing studio capabilities
+- **Name & Info** - Studio introduction and key information
+- **Services** - Comprehensive list of video production services
+- **Portfolio** - Showcase of completed projects
+- **Reels** - Short-form video content gallery
+- **Documentary** - Documentary work showcase
+- **AI Project Visualizer** - Interactive project visualization
+- **About Us** - Detailed company information
+- **Testimonials** - Client reviews and feedback
+- **Contact Form** - Professional contact interface
+- **Footer** - Complete site navigation and social links
 
-There are several ways of editing your application.
+### Technical Features
+- **Responsive Design** - Optimized for all device sizes
+- **Smooth Scrolling** - Enhanced navigation experience
+- **Loading Animation** - Professional loading screen
+- **Active Section Tracking** - Dynamic navigation highlighting
+- **Mobile-First Design** - Progressive enhancement approach
+- **Modern UI Components** - Built with shadcn/ui
+- **Gradient Animations** - Beautiful visual effects
+- **Social Media Integration** - Direct links to all platforms
 
-**Use Lovable**
+## 🛠️ Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3c7af306-3432-42a4-acc8-e84a8939f8cb) and start prompting.
+- **Frontend Framework**: React 18.3.1
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Icons**: Lucide React
+- **Build Tool**: Vite
+- **Routing**: React Router DOM
+- **State Management**: React Hooks
+- **Animations**: CSS Transitions & Transforms
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📦 Dependencies
 
-**Use your preferred IDE**
+### Core Dependencies
+- React & React DOM
+- TypeScript
+- Tailwind CSS
+- React Router DOM
+- Lucide React (Icons)
+- shadcn/ui Components
+- Vite (Build Tool)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### UI & Styling
+- class-variance-authority
+- clsx
+- tailwind-merge
+- tailwindcss-animate
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Additional Libraries
+- @tanstack/react-query (Data Fetching)
+- React Hook Form (Form Management)
+- Zod (Schema Validation)
+- Date-fns (Date Utilities)
+- Recharts (Charts/Analytics)
 
-Follow these steps:
+## 🚀 Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn package manager
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Clone the repository**
+```bash
+git clone <your-repository-url>
+cd uxcraft-studio
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Start development server**
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. **Open in browser**
+Navigate to `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+### Preview Production Build
+```bash
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/
+│   ├── ui/                 # shadcn/ui components
+│   ├── Header.tsx          # Navigation header
+│   ├── Footer.tsx          # Site footer
+│   ├── VideoHero.tsx       # Hero video section
+│   ├── AboutVideo.tsx      # About video component
+│   ├── NameAndInfo.tsx     # Studio information
+│   ├── Services.tsx        # Services showcase
+│   ├── Portfolio.tsx       # Project portfolio
+│   ├── Reels.tsx          # Video reels gallery
+│   ├── Documentary.tsx     # Documentary showcase
+│   ├── AboutUs.tsx        # Company information
+│   ├── Testimonials.tsx   # Client testimonials
+│   ├── ContactForm.tsx    # Contact interface
+│   └── AIProjectVisualizer.tsx # Interactive visualizer
+├── pages/
+│   ├── Index.tsx          # Main page component
+│   └── NotFound.tsx       # 404 error page
+├── hooks/
+│   ├── use-mobile.tsx     # Mobile detection hook
+│   └── use-toast.ts       # Toast notifications
+├── lib/
+│   └── utils.ts           # Utility functions
+├── App.tsx                # Main application component
+├── main.tsx              # Application entry point
+└── index.css             # Global styles
+```
 
-This project is built with:
+## 🎨 Design System
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Color Palette
+- **Primary**: Studio Purple (`#8b5cf6`)
+- **Secondary**: Studio Blue (`#3b82f6`)
+- **Background**: Dark theme with gradient overlays
+- **Text**: White with gray variations for hierarchy
 
-## How can I deploy this project?
+### Typography
+- **Headings**: Orbitron font family
+- **Body Text**: Inter font family
+- **Gradients**: Purple to blue transitions
 
-Simply open [Lovable](https://lovable.dev/projects/3c7af306-3432-42a4-acc8-e84a8939f8cb) and click on Share -> Publish.
+### Components
+- Custom gradient buttons
+- Animated loading states
+- Responsive navigation
+- Modern card layouts
+- Interactive hover effects
 
-## Can I connect a custom domain to my Lovable project?
+## 📱 Responsive Breakpoints
 
-Yes, you can!
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
+- **Large Desktop**: > 1400px
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🌐 Social Media Integration
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+The website includes direct links to:
+- YouTube: [UXCraft Studio Channel](https://www.youtube.com/channel/UCzHSHT9GjgiIwv9HY4uiEyg)
+- Facebook: [UXCraft Studio](https://www.facebook.com/uxcraftstudio)
+- Twitter: [Faysal Amin](https://x.com/FaysalAmin75496)
+- LinkedIn: [UXCraft Studio](https://www.linkedin.com/company/uxcraft-studio)
+
+## 📞 Contact Information
+
+- **Email**: uxcraftstudio936@gmail.com
+- **Phone**: +880 1986 483724
+- **WhatsApp**: +880 1986 483724
+- **Location**: Dhaka, Bangladesh
+
+## 🎬 Services Offered
+
+- Video Editing
+- Color Grading
+- Motion Graphics
+- Audio Post-Production
+- 3D Animation
+- Documentary Editing
+
+## 🔧 Development Scripts
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run linting
+npm run lint
+```
+
+## 📝 Environment Variables
+
+Create a `.env` file in the root directory for any environment-specific configurations:
+
+```env
+VITE_API_URL=your_api_url_here
+VITE_CONTACT_EMAIL=uxcraftstudio936@gmail.com
+```
+
+## 🚀 Deployment
+
+This project can be deployed on various platforms:
+
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Deploy automatically on every push to main branch
+
+### Netlify
+1. Build the project: `npm run build`
+2. Deploy the `dist` folder to Netlify
+
+### Other Platforms
+The built files in the `dist` directory can be deployed to any static hosting service.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit changes: `git commit -am 'Add new feature'`
+4. Push to branch: `git push origin feature/new-feature`
+5. Submit a pull request
+
+## 📄 License
+
+This project is proprietary and belongs to UXCraft Studio. All rights reserved.
+
+## 👨‍💻 Development Team
+
+- **Developer**: UXCraft Studio Team
+- **Design**: UXCraft Studio
+- **Contact**: uxcraftstudio936@gmail.com
+
+## 🔄 Updates & Maintenance
+
+- Regular dependency updates
+- Performance optimizations
+- New feature additions based on client feedback
+- SEO improvements
+- Accessibility enhancements
+
+---
+
+**UXCraft Studio** - Transforming your vision into stunning visual stories that captivate audiences and elevate your brand through professional video editing and animation.
+
+For support or inquiries, please contact us at uxcraftstudio936@gmail.com or call +880 1986 483724.
