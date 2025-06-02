@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
+import { Resend } from "resend";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -18,51 +19,209 @@ const ContactForm = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+  //   setSubmitError("");
+
+  //   try {
+  //     // Using Formspree for email submission (free service)
+  //     const response = await fetch("https://formspree.io/f/xanjwgjg", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         name: formData.name,
+  //         email: formData.email,
+  //         company: formData.company,
+  //         projectType: formData.projectType,
+  //         budget: formData.budget,
+  //         timeline: formData.timeline,
+  //         message: formData.message,
+  //         _subject: "New Project Request from UXCraft Studio Website",
+  //       }),
+  //     });
+  //     console.log("Form submission response:", response);
+
+  //     if (response.ok) {
+  //       setSubmitSuccess(true);
+  //       // Reset form
+  //       setFormData({
+  //         name: "",
+  //         email: "",
+  //         company: "",
+  //         projectType: "",
+  //         budget: "",
+  //         timeline: "",
+  //         message: "",
+  //       });
+  //     } else {
+  //       throw new Error("Failed to submit form");
+  //     }
+  //   } catch (error) {
+  //     setSubmitError(
+  //       "There was an error submitting your form. Please try again or contact us directly."
+  //     );
+  //     console.error("Form submission error:", error);
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError("");
 
     try {
-      // Using Formspree for email submission (free service)
-      const response = await fetch("https://formspree.io/f/xanjwgjg", {
+      // Generate the email content (same as before)
+      const projectDetails = `
+      <div style="margin-bottom: 24px;">
+        <h3 style="color: #6B46C1; border-bottom: 1px solid #E9D8FD; padding-bottom: 8px; margin-bottom: 16px;">
+          Project Details
+        </h3>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 8px; width: 30%; color: #4A5568; font-weight: 500;">Name</td>
+            <td style="padding: 8px;">${formData.name}</td>
+          </tr>
+          <tr style="background-color: #F8FAFC;">
+            <td style="padding: 8px; color: #4A5568; font-weight: 500;">Email</td>
+            <td style="padding: 8px;">${formData.email}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; color: #4A5568; font-weight: 500;">Company/Channel</td>
+            <td style="padding: 8px;">${formData.company || "N/A"}</td>
+          </tr>
+          <tr style="background-color: #F8FAFC;">
+            <td style="padding: 8px; color: #4A5568; font-weight: 500;">Project Type</td>
+            <td style="padding: 8px;">${formData.projectType}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; color: #4A5568; font-weight: 500;">Budget Range</td>
+            <td style="padding: 8px;">${formData.budget || "Not specified"}</td>
+          </tr>
+          <tr style="background-color: #F8FAFC;">
+            <td style="padding: 8px; color: #4A5568; font-weight: 500;">Timeline</td>
+            <td style="padding: 8px;">${formData.timeline || "Flexible"}</td>
+          </tr>
+        </table>
+      </div>
+    `;
+
+      const emailHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+          .container { max-width: 600px; margin: 0 auto; padding: 24px; background-color: #FFFFFF; }
+          .header { background-color: #6B46C1; padding: 32px; text-align: center; border-radius: 8px 8px 0 0; }
+          .content { padding: 32px; color: #4A5568; line-height: 1.6; }
+          .footer { text-align: center; padding: 24px; color: #718096; font-size: 14px; }
+          .message-box { background-color: #F8FAFC; padding: 16px; border-radius: 8px; margin-top: 24px; }
+          .btn { display: inline-block; background-color: #6B46C1; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 style="color: white; margin: 0; font-size: 28px;">New Project Request</h1>
+            <p style="color: #E9D8FD; margin-top: 8px; font-size: 16px;">UXCraft Studio Website</p>
+          </div>
+          
+          <div class="content">
+            <h2 style="color: #2D3748; margin-top: 0;">Hello UXCraft Team,</h2>
+            <p>A new project request has been submitted through the website:</p>
+            
+            ${projectDetails}
+            
+            <h3 style="color: #6B46C1; margin-bottom: 16px;">Project Description</h3>
+            <div class="message-box">
+              <p style="margin: 0;">${formData.message.replace(/\n/g, "<br>")}</p>
+            </div>
+            
+            <div style="margin-top: 32px; text-align: center;">
+              <a href="mailto:${formData.email}" class="btn">Reply to Client</a>
+            </div>
+          </div>
+          
+          <div class="footer">
+            <p>This email was sent from UXCraft Studio contact form</p>
+            <p style="margin-top: 8px;">© ${new Date().getFullYear()} UXCraft Studio. All rights reserved.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
+
+      const textContent = `
+      New Project Request - UXCraft Studio
+      =====================================
+      
+      Name: ${formData.name}
+      Email: ${formData.email}
+      Company/Channel: ${formData.company || "N/A"}
+      Project Type: ${formData.projectType}
+      Budget Range: ${formData.budget || "Not specified"}
+      Timeline: ${formData.timeline || "Flexible"}
+      
+      Project Description:
+      ${formData.message}
+      
+      --
+      Sent from UXCraft Studio contact form
+      © ${new Date().getFullYear()} UXCraft Studio
+    `;
+
+      // Send email via backend proxy
+      const response = await fetch("http://localhost:3001/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          projectType: formData.projectType,
-          budget: formData.budget,
-          timeline: formData.timeline,
-          message: formData.message,
-          _subject: "New Project Request from UXCraft Studio Website",
+          // from: "UXCraft Studio <contact@uxcraftstudio.com>",
+          // from: "UXCraft Studio <uxcraftstudio.com>",
+          from: "onboarding@resend.dev",
+          to: ["jisan.sc@gmail.com"],
+          reply_to: formData.email,
+          subject: `New Project Request: ${formData.name} - ${formData.projectType}`,
+          html: emailHtml,
+          text: textContent,
         }),
       });
-      console.log("Form submission response:", response);
 
-      if (response.ok) {
-        setSubmitSuccess(true);
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          projectType: "",
-          budget: "",
-          timeline: "",
-          message: "",
-        });
-      } else {
-        throw new Error("Failed to submit form");
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          responseData.error?.message ||
+            `Email sending failed with status ${response.status}`
+        );
       }
+
+      console.log("Email sent:", responseData);
+      setSubmitSuccess(true);
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        projectType: "",
+        budget: "",
+        timeline: "",
+        message: "",
+      });
     } catch (error) {
+      console.error("Email submission error:", error);
       setSubmitError(
-        "There was an error submitting your form. Please try again or contact us directly."
+        error instanceof Error
+          ? error.message
+          : "There was an error submitting your form. Please try again or contact us directly."
       );
-      console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
