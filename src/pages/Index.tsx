@@ -96,9 +96,9 @@ const Index = () => {
 
         {/* Portfolio Section */}
         <section id="portfolio">
-          <Portfolio />
-          <Reels />
           <Documentary />
+          <Reels />
+          <Portfolio />
         </section>
 
         {/* AI Project Visualizer */}

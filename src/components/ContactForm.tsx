@@ -142,7 +142,7 @@ const ContactForm = () => {
             </div>
             
             <div style="margin-top: 32px; text-align: center;">
-              <a href="mailto:${formData.email}" class="btn">Reply to Client</a>
+              <a href="mailto:${formData.email}" class="btn" style="color: white;">Reply to Client</a>
             </div>
           </div>
           
@@ -182,10 +182,10 @@ const ContactForm = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          // from: "UXCraft Studio <contact@uxcraftstudio.com>",
-          // from: "UXCraft Studio <uxcraftstudio.com>",
-          from: "onboarding@resend.dev",
-          to: ["jisan.sc@gmail.com"],
+          // from: "onboarding@resend.dev",
+          from: "UXCraft Studio <contact@uxcraftstudio.com>",
+          // to: ["jisan.sc@gmail.com"],
+          to: ["contact@uxcraftstudio.com"],
           reply_to: formData.email,
           subject: `New Project Request: ${formData.name} - ${formData.projectType}`,
           html: emailHtml,
@@ -271,7 +271,7 @@ const ContactForm = () => {
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email</h4>
                   <p className="text-studio-gray-400">
-                    uxcraftstudio936@gmail.com
+                    contact@uxcraftstudio.com
                   </p>
                 </div>
               </div>
@@ -311,14 +311,52 @@ const ContactForm = () => {
                 WhatsApp Chat
               </Button>
 
-              <Button
+              {/* <Button
                 variant="outline"
                 className="btn-secondary w-full group"
                 onClick={() =>
-                  window.open("mailto:uxcraftstudio936@gmail.com", "_blank")
+                  window.open("mailto:contact@uxcraftstudio.com", "_blank")
                 }
               >
                 <Mail className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+                Send Email
+              </Button> */}
+              {/* <Button
+                variant="outline"
+                className="btn-secondary w-full group"
+                onClick={() =>
+                  window.open(
+                    "https://mail.google.com/mail/?view=cm&to=contact@uxcraftstudio.com&su=Project Inquiry&body=Hi%20UXCraft%20Studio%2C",
+                    "_blank"
+                  )
+                }
+              >
+                <Mail className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+                Send Email
+              </Button> */}
+              {/* <Button
+                variant="outline"
+                className="btn-secondary w-full group"
+                onClick={() => {
+                  window.location.href =
+                    "mailto:contact@uxcraftstudio.com?subject=Project Inquiry&body=Hi UXCraft Studio,";
+                }}
+              >
+                <Mail className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+                Send Email
+              </Button> */}
+              <Button
+                variant="outline"
+                className="btn-secondary w-full group"
+                onClick={() => {
+                  // const gmailUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=contact@uxcraftstudio.com&su=Project Inquiry&body=Hi UXCraft Studio,`;
+                  // const gmailUrl = `https://mail.google.com/mail/u/0/#inbox?compose=new&to=contact@uxcraftstudio.com&su=Project Inquiry&body=Hi UXCraft Studio,`;
+                  const gmailUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=contact@uxcraftstudio.com&su=Project Inquiry&body=Hi UXCraft Studio,`;
+                  window.open(gmailUrl, "_blank");
+                }}
+              >
+                <Mail className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+                {/* Send Email via Gmail */}
                 Send Email
               </Button>
             </div>

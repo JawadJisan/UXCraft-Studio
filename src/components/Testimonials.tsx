@@ -83,19 +83,19 @@ const Testimonials = () => {
           <div className="text-center">
             <div className="text-4xl font-bold text-gradient font-orbitron mb-2">
               {/* 200+ */}
-              50+
+              30+
             </div>
             <div className="text-studio-gray-400">Happy Clients</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-gradient font-orbitron mb-2">
-              70+
+              50+
             </div>
             <div className="text-studio-gray-400">Projects Completed</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-gradient font-orbitron mb-2">
-              4.2
+              4.9
             </div>
             <div className="text-studio-gray-400">Average Rating</div>
           </div>

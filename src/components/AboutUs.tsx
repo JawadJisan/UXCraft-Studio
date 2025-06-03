@@ -71,7 +71,7 @@ const AboutUs = () => {
             <div className="grid md:grid-cols-2 gap-8 text-studio-gray-300">
               <div className="space-y-4">
                 <p className="leading-relaxed">
-                  Founded in 2019, UXCraft Studio emerged from a simple belief:
+                  Founded in 2021, UXCraft Studio emerged from a simple belief:
                   every story deserves to be told with impact. What started as a
                   small team of passionate editors has grown into a full-service
                   video production studio serving clients worldwide.

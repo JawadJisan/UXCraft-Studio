@@ -143,7 +143,7 @@ const Footer = ({ navItems, setActiveSection }: FooterProps) => {
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-studio-accent-purple" />
                 <span className="text-studio-gray-400 font-inter">
-                  contact@uxcraftstudio.com and somtheing
+                  contact@uxcraftstudio.com
                 </span>
               </div>
 

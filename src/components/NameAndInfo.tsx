@@ -97,9 +97,9 @@ import { Mail, MessageSquare, Award, Users, Clock, Star } from "lucide-react";
 
 const NameAndInfo = () => {
   const stats = [
-    { icon: Award, label: "Projects Completed", value: "500+" },
-    { icon: Users, label: "Happy Clients", value: "200+" },
-    { icon: Clock, label: "Years Experience", value: "5+" },
+    { icon: Award, label: "Projects Completed", value: "50+" },
+    { icon: Users, label: "Happy Clients", value: "30+" },
+    { icon: Clock, label: "Years Experience", value: "3+" },
     { icon: Star, label: "Average Rating", value: "4.9" },
   ];
 
