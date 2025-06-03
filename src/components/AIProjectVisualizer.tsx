@@ -174,114 +174,116 @@ const AIProjectVisualizer = () => {
         </div>
 
         {/* <div className="grid lg:grid-cols-2 gap-12"> */}
-        <div className="grid lg:grid-cols-2 gap-12 h-screen">
+        {/* <div className="grid lg:grid-cols-2 gap-12 h-screen"> */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:h-screen">
           {/* Input Form */}
           {/* <div className=" justify-center "> */}
-            <Card className="bg-transparent border-studio-gray-700">
-              <CardHeader>
-                <CardTitle className="text-2xl font-orbitron text-white flex items-center">
-                  <Sparkles className="mr-2 h-6 w-6 text-studio-accent-purple" />
-                  Project Details
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <label className="block text-white font-medium mb-2">
-                    Project Type
-                  </label>
-                  <select
-                    name="projectType"
-                    value={projectData.projectType}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-600 rounded-lg text-white focus:border-studio-accent-purple focus:outline-none transition-colors"
-                  >
-                    <option value="">Select project type</option>
-                    <option value="youtube">YouTube Video</option>
-                    <option value="social-media">Social Media Content</option>
-                    <option value="commercial">Commercial/Advertisement</option>
-                    <option value="documentary">Documentary</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-white font-medium mb-2">
-                    Target Audience
-                  </label>
-                  <select
-                    name="targetAudience"
-                    value={projectData.targetAudience}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-600 rounded-lg text-white focus:border-studio-accent-purple focus:outline-none transition-colors"
-                  >
-                    <option value="">Select target audience</option>
-                    <option value="teens">Teens (13-17)</option>
-                    <option value="young-adults">Young Adults (18-25)</option>
-                    <option value="adults">Adults (26-40)</option>
-                    <option value="professionals">Professionals (30+)</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-white font-medium mb-2">
-                    Desired Mood
-                  </label>
-                  <select
-                    name="mood"
-                    value={projectData.mood}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-600 rounded-lg text-white focus:border-studio-accent-purple focus:outline-none transition-colors"
-                  >
-                    <option value="">Select mood</option>
-                    <option value="energetic">Energetic & Dynamic</option>
-                    <option value="professional">Professional & Clean</option>
-                    <option value="cinematic">Cinematic & Dramatic</option>
-                    <option value="modern">Modern & Trendy</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-white font-medium mb-2">
-                    Project Description
-                  </label>
-                  <textarea
-                    name="description"
-                    value={projectData.description}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-600 rounded-lg text-white focus:border-studio-accent-purple focus:outline-none transition-colors resize-none"
-                    placeholder="Describe your project goals, message, and vision..."
-                  ></textarea>
-                </div>
-
-                <Button
-                  onClick={generateSuggestions}
-                  disabled={
-                    !projectData.projectType ||
-                    !projectData.targetAudience ||
-                    !projectData.mood ||
-                    isGenerating
-                  }
-                  className="btn-primary w-full"
+          <Card className="bg-transparent border-studio-gray-700">
+            <CardHeader>
+              <CardTitle className="text-2xl font-orbitron text-white flex items-center">
+                <Sparkles className="mr-2 h-6 w-6 text-studio-accent-purple" />
+                Project Details
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div>
+                <label className="block text-white font-medium mb-2">
+                  Project Type
+                </label>
+                <select
+                  name="projectType"
+                  value={projectData.projectType}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-600 rounded-lg text-white focus:border-studio-accent-purple focus:outline-none transition-colors"
                 >
-                  {isGenerating ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></div>
-                      Generating AI Suggestions...
-                    </>
-                  ) : (
-                    <>
-                      <Wand2 className="mr-2 h-4 w-4" />
-                      Generate AI Suggestions
-                    </>
-                  )}
-                </Button>
-              </CardContent>
-            </Card>
+                  <option value="">Select project type</option>
+                  <option value="youtube">YouTube Video</option>
+                  <option value="social-media">Social Media Content</option>
+                  <option value="commercial">Commercial/Advertisement</option>
+                  <option value="documentary">Documentary</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-white font-medium mb-2">
+                  Target Audience
+                </label>
+                <select
+                  name="targetAudience"
+                  value={projectData.targetAudience}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-600 rounded-lg text-white focus:border-studio-accent-purple focus:outline-none transition-colors"
+                >
+                  <option value="">Select target audience</option>
+                  <option value="teens">Teens (13-17)</option>
+                  <option value="young-adults">Young Adults (18-25)</option>
+                  <option value="adults">Adults (26-40)</option>
+                  <option value="professionals">Professionals (30+)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-white font-medium mb-2">
+                  Desired Mood
+                </label>
+                <select
+                  name="mood"
+                  value={projectData.mood}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-600 rounded-lg text-white focus:border-studio-accent-purple focus:outline-none transition-colors"
+                >
+                  <option value="">Select mood</option>
+                  <option value="energetic">Energetic & Dynamic</option>
+                  <option value="professional">Professional & Clean</option>
+                  <option value="cinematic">Cinematic & Dramatic</option>
+                  <option value="modern">Modern & Trendy</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-white font-medium mb-2">
+                  Project Description
+                </label>
+                <textarea
+                  name="description"
+                  value={projectData.description}
+                  onChange={handleInputChange}
+                  rows={4}
+                  className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-600 rounded-lg text-white focus:border-studio-accent-purple focus:outline-none transition-colors resize-none"
+                  placeholder="Describe your project goals, message, and vision..."
+                ></textarea>
+              </div>
+
+              <Button
+                onClick={generateSuggestions}
+                disabled={
+                  !projectData.projectType ||
+                  !projectData.targetAudience ||
+                  !projectData.mood ||
+                  isGenerating
+                }
+                className="btn-primary w-full"
+              >
+                {isGenerating ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></div>
+                    Generating AI Suggestions...
+                  </>
+                ) : (
+                  <>
+                    <Wand2 className="mr-2 h-4 w-4" />
+                    Generate AI Suggestions
+                  </>
+                )}
+              </Button>
+            </CardContent>
+          </Card>
           {/* </div> */}
 
           {/* AI Suggestions */}
           {/* <div className="space-y-6"> */}
-          <div className="flex items-center justify-center h-full">
+          {/* <div className="flex items-center justify-center h-full"> */}
+          <div className="flex items-center justify-center lg:h-full mb-10 sm:mb-16 md:mb-20 lg:mb-0">
             {!suggestions && !isGenerating && (
               <Card className="bg-transparent border-studio-gray-700 border-dashed">
                 <CardContent className="p-12 text-center">

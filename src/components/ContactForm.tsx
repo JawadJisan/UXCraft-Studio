@@ -10,7 +10,7 @@ const ContactForm = () => {
     email: "",
     company: "",
     projectType: "",
-    budget: "",
+    budget: "", // Will store either dropdown value or custom amount
     timeline: "",
     message: "",
   });
@@ -19,59 +19,30 @@ const ContactForm = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
-  //   setSubmitError("");
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value, type } = e.target;
 
-  //   try {
-  //     // Using Formspree for email submission (free service)
-  //     const response = await fetch("https://formspree.io/f/xanjwgjg", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         name: formData.name,
-  //         email: formData.email,
-  //         company: formData.company,
-  //         projectType: formData.projectType,
-  //         budget: formData.budget,
-  //         timeline: formData.timeline,
-  //         message: formData.message,
-  //         _subject: "New Project Request from UXCraft Studio Website",
-  //       }),
-  //     });
-  //     console.log("Form submission response:", response);
+    // For custom budget input, prefix with "custom:"
+    const finalValue = name === "customBudget" ? `custom:${value}` : value;
 
-  //     if (response.ok) {
-  //       setSubmitSuccess(true);
-  //       // Reset form
-  //       setFormData({
-  //         name: "",
-  //         email: "",
-  //         company: "",
-  //         projectType: "",
-  //         budget: "",
-  //         timeline: "",
-  //         message: "",
-  //       });
-  //     } else {
-  //       throw new Error("Failed to submit form");
-  //     }
-  //   } catch (error) {
-  //     setSubmitError(
-  //       "There was an error submitting your form. Please try again or contact us directly."
-  //     );
-  //     console.error("Form submission error:", error);
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
+    setFormData({
+      ...formData,
+      // Map customBudget to budget field, others to their own fields
+      [name === "customBudget" ? "budget" : name]: finalValue,
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError("");
+
+    console.log("Form data before submission:", formData);
+    // return;
 
     try {
       // Generate the email content (same as before)
@@ -175,23 +146,27 @@ const ContactForm = () => {
     `;
 
       // Send email via backend proxy
-      const response = await fetch("http://localhost:3001/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          // from: "onboarding@resend.dev",
-          from: "UXCraft Studio <contact@uxcraftstudio.com>",
-          // to: ["jisan.sc@gmail.com"],
-          to: ["contact@uxcraftstudio.com"],
-          reply_to: formData.email,
-          subject: `New Project Request: ${formData.name} - ${formData.projectType}`,
-          html: emailHtml,
-          text: textContent,
-        }),
-      });
+      // const response = await fetch("http://localhost:3001/api/send-email", {
+      const response = await fetch(
+        "https://ux-craft-studio-backend.vercel.app/api/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            // from: "onboarding@resend.dev",
+            from: "UXCraft Studio <contact@uxcraftstudio.com>",
+            // to: ["jisan.sc@gmail.com"],
+            to: ["contact@uxcraftstudio.com"],
+            reply_to: formData.email,
+            subject: `New Project Request: ${formData.name} - ${formData.projectType}`,
+            html: emailHtml,
+            text: textContent,
+          }),
+        }
+      );
 
       const responseData = await response.json();
 
@@ -225,17 +200,6 @@ const ContactForm = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
   };
 
   return (
@@ -428,7 +392,7 @@ const ContactForm = () => {
                         value={formData.projectType}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-700 rounded-lg text-white focus:border-studio-accent-purple focus:ring-1 focus:ring-studio-accent-purple focus:outline-none transition-all appearance-none"
+                        className="w-full cursor-pointer px-4 py-3 bg-studio-gray-800 border border-studio-gray-700 rounded-lg text-white focus:border-studio-accent-purple focus:ring-1 focus:ring-studio-accent-purple focus:outline-none transition-all appearance-none"
                       >
                         <option value="">Select project type</option>
                         <option value="youtube">YouTube Video</option>
@@ -442,7 +406,7 @@ const ContactForm = () => {
                       </select>
                     </div>
 
-                    <div className="space-y-2">
+                    {/* <div className="space-y-2">
                       <label className="block text-white font-medium">
                         Budget Range
                       </label>
@@ -450,7 +414,7 @@ const ContactForm = () => {
                         name="budget"
                         value={formData.budget}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-700 rounded-lg text-white focus:border-studio-accent-purple focus:ring-1 focus:ring-studio-accent-purple focus:outline-none transition-all appearance-none"
+                        className="w-full cursor-pointer px-4 py-3 bg-studio-gray-800 border border-studio-gray-700 rounded-lg text-white focus:border-studio-accent-purple focus:ring-1 focus:ring-studio-accent-purple focus:outline-none transition-all appearance-none"
                       >
                         <option value="">Select budget range</option>
                         <option value="500-1000">$500 - $1,000</option>
@@ -458,6 +422,50 @@ const ContactForm = () => {
                         <option value="2500-5000">$2,500 - $5,000</option>
                         <option value="5000+">$5,000+</option>
                       </select>
+                    </div> */}
+                    <div className="space-y-2">
+                      <label className="block text-white font-medium">
+                        Budget Range
+                      </label>
+                      <select
+                        name="budget"
+                        value={
+                          formData.budget.startsWith("custom:")
+                            ? "custom"
+                            : formData.budget
+                        }
+                        onChange={handleChange}
+                        className="w-full cursor-pointer px-4 py-3 bg-studio-gray-800 border border-studio-gray-700 rounded-lg text-white focus:border-studio-accent-purple focus:ring-1 focus:ring-studio-accent-purple focus:outline-none transition-all appearance-none"
+                      >
+                        <option value="">Select budget range</option>
+                        <option value="500-1000">$500 - $1,000</option>
+                        <option value="1000-2500">$1,000 - $2,500</option>
+                        <option value="2500-5000">$2,500 - $5,000</option>
+                        <option value="custom">$5,000+ (Custom)</option>
+                      </select>
+
+                      {/* Custom budget input appears only when "custom" is selected */}
+                      {formData.budget.startsWith("custom:") ||
+                      formData.budget === "custom" ? (
+                        <div className="mt-2">
+                          <label className="block text-white font-medium">
+                            Enter Custom Amount
+                          </label>
+                          <input
+                            type="number"
+                            name="customBudget"
+                            value={
+                              formData.budget.startsWith("custom:")
+                                ? formData.budget.split(":")[1]
+                                : ""
+                            }
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 bg-studio-gray-800 border border-studio-gray-700 rounded-lg text-white focus:border-studio-accent-purple focus:ring-1 focus:ring-studio-accent-purple focus:outline-none transition-all"
+                            placeholder="Enter your budget amount"
+                            min="5000"
+                          />
+                        </div>
+                      ) : null}
                     </div>
                   </div>
 
