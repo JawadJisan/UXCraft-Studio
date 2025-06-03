@@ -55,6 +55,11 @@ const Footer = ({ navItems, setActiveSection }: FooterProps) => {
       href: "https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fuxcraft-studio%2Fposts%2F%3FfeedView%3Dall",
       label: "LinkedIn",
     },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/uxcra_ftstudio",
+      label: "Instagram",
+    },
   ];
 
   return (
