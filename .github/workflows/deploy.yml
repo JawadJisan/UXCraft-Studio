@@ -4,19 +4,20 @@ on:
   push:
     branches: [JawadDev]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions: # Add this block
-      contents: write
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Important for GH Pages action
+          fetch-depth: 0 # Important for GH Pages history
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -37,4 +38,5 @@ jobs:
           publish_dir: ./dist
           cname: uxcraftstudio.com
           enable_jekyll: false
-          keep_files: false # Clean old files on deploy
+          keep_files: false
+          force_orphan: true # ✨ Ensures clean deployment each time

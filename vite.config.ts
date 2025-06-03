@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => ({
-  base: command === "build" ? "/" : "/", // Add this line
+  base: "/", // ✅ Keep as root since you're using a custom domain
   server: {
     host: "::",
     port: 8080,
@@ -19,6 +19,6 @@ export default defineConfig(({ mode, command }) => ({
     },
   },
   build: {
-    outDir: "dist", // Explicit output directory
+    outDir: "dist", // ✅ Confirmed output folder for GitHub Pages workflow
   },
 }));
