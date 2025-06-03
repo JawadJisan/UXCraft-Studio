@@ -7,10 +7,16 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions: # Add this block
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Important for GH Pages action
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -27,7 +33,8 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Auto-provided, no setup needed
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           cname: uxcraftstudio.com
-          enable_jekyll: false # Important for SPAs
+          enable_jekyll: false
+          keep_files: false # Clean old files on deploy
