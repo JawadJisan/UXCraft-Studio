@@ -10,6 +10,8 @@ import {
   Facebook,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import logo from "../../public/logo.png";
+
 
 interface FooterProps {
   navItems: { id: string; label: string }[];
@@ -69,7 +71,7 @@ const Footer = ({ navItems, setActiveSection }: FooterProps) => {
         <div className="py-16 grid gap-8 lg:grid-cols-4">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
+            {/* <div className="flex items-center space-x-2 mb-6">
               <div className="p-2 rounded-lg bg-gradient-studio">
                 <Sparkles className="h-6 w-6 text-white" />
               </div>
@@ -81,8 +83,14 @@ const Footer = ({ navItems, setActiveSection }: FooterProps) => {
                   Studio
                 </p>
               </div>
+            </div> */}
+            <div className="w-36 h-20 flex items-center justify-center overflow-hidden rounded-xl shadow-lg">
+              <img
+                src={logo}
+                alt="Studio Logo"
+                className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
+              />
             </div>
-
             <p className="text-studio-gray-300 mb-6 leading-relaxed">
               Transforming your vision into stunning visual stories that
               captivate audiences and elevate your brand through professional

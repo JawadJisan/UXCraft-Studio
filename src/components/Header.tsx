@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Menu, X, Sparkles } from "lucide-react";
+import logo from "../../public/logo.png";
 
 interface HeaderProps {
   activeSection: string;
@@ -63,7 +64,7 @@ const Header = ({ activeSection, setActiveSection, navItems }: HeaderProps) => {
             className="flex items-center space-x-3 cursor-pointer group"
             onClick={() => scrollToSection("home")}
           >
-            <div className="p-2 rounded-xl bg-gradient-to-r from-studio-accent-purple to-studio-accent-blue shadow-lg group-hover:shadow-studio-accent-purple/50 transition-all duration-300">
+            {/* <div className="p-2 rounded-xl bg-gradient-to-r from-studio-accent-purple to-studio-accent-blue shadow-lg group-hover:shadow-studio-accent-purple/50 transition-all duration-300">
               <Sparkles className="h-6 w-6 text-white" />
             </div>
             <div>
@@ -71,6 +72,19 @@ const Header = ({ activeSection, setActiveSection, navItems }: HeaderProps) => {
                 UXCraft
               </h1>
               <p className="text-xs text-studio-gray-400 font-inter">Studio</p>
+            </div> */}
+            {/* <img
+              src={logo}
+              alt="Studio Logo"
+              // className="h-20 w-16 rounded-xl shadow-lg transition-transform duration-300 transform hover:scale-105"
+              className="rounded-xl shadow-lg transition-transform duration-300 transform hover:scale-105"
+            /> */}
+            <div className="w-32 h-20 flex items-center justify-center overflow-hidden rounded-xl shadow-lg">
+              <img
+                src={logo}
+                alt="Studio Logo"
+                className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
+              />
             </div>
           </div>
 
@@ -100,7 +114,8 @@ const Header = ({ activeSection, setActiveSection, navItems }: HeaderProps) => {
               className="bg-gradient-to-r from-studio-accent-purple to-studio-accent-blue hover:from-studio-accent-blue hover:to-studio-accent-purple text-white font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-studio-accent-purple/25 transition-all duration-300 transform hover:scale-105"
               onClick={() => scrollToSection("contact")}
             >
-              Get Started
+              {/* Get Started */}
+              Order Now
             </Button>
           </div>
 
@@ -138,7 +153,8 @@ const Header = ({ activeSection, setActiveSection, navItems }: HeaderProps) => {
                 className="w-full mt-4 bg-gradient-to-r from-studio-accent-purple to-studio-accent-blue text-white"
                 onClick={() => scrollToSection("contact")}
               >
-                Get Started
+                {/* Get Started */}
+                Order Now
               </Button>
             </div>
           </div>
