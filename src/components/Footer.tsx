@@ -10,7 +10,7 @@ import {
   Facebook,
 } from "lucide-react";
 import { Button } from "./ui/button";
-import logo from "../../public/logo.png";
+import logo from "/logo.png";
 
 
 interface FooterProps {

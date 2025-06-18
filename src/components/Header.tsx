@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Menu, X, Sparkles } from "lucide-react";
-import logo from "../../public/logo.png";
+import logo from "/logo.png";
 
 interface HeaderProps {
   activeSection: string;
